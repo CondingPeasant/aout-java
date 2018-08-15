@@ -1,8 +1,8 @@
 public class LogAnalyzer {
 	public boolean isValidFileName(String fileName) {
-		if (fileName.endsWith(".SLF")) {
-			return false;
+		if (fileName.toUpperCase().endsWith(".SLF")) {
+			return true;
 		}
-		return true;
+		return false;
 	}
 }
