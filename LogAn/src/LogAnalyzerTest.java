@@ -9,7 +9,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
-@RunWith(Parameterized.class)
+@RunWith(JUnitParamsRunner.class)
 class LogAnalyzerTest {
 
 	/*
@@ -35,6 +35,7 @@ class LogAnalyzerTest {
 	}
 	*/
 
+	/*
 	@Parameters
 	public static Object[][] data() {
 		return new Object[][] {
@@ -49,9 +50,13 @@ class LogAnalyzerTest {
 	
 	@Parameter(1)
 	public boolean expectResult;
-	
+	*/
 	@Test
-	public void isValidFileName() {
+	@Parameters({
+		"fileWithBadExtention.foo, false",
+		"fileWithGoodExtention.slf, true",
+		"fileWithGoodExtention.SLF, true"})
+	public void isValidFileNameString fileName, boolean expectResult() {
 		LogAnalyzer analyzer = new LogAnalyzer();
 		boolean actualResult = analyzer.isValidFileName(fileName);
 		assertEquals(expectResult, actualResult);
