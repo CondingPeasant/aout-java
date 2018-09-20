@@ -30,9 +30,12 @@ public class LogAnalyzerTest {
 	
 	@Test
 	public void isValidFileName() {
-		LogAnalyzer analyzer = new LogAnalyzer();
-		boolean actualResult = analyzer.isValidFileName(fileName);
+		LogAnalyzer la = makeLogAnalyzer();
+		boolean actualResult = la.isValidFileName(fileName);
 		assertEquals(expectResult, actualResult);
 	}
 	
+	private LogAnalyzer makeLogAnalyzer() {
+		return new LogAnalyzer();
+	}
 }
